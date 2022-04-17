@@ -1,0 +1,62 @@
+{
+  "name": "test_app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "autoprefixer": "^9.8.0",
+    "axios": "^0.26.1",
+    "babel-minify-webpack-plugin": "^0.3.1",
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "less-loader": "^7.3.0",
+    "postcss-loader": "^4.3.0",
+    "react": "^16.12.0",
+    "react-dev-utils": "^10.2.1",
+    "react-dom": "^16.12.0",
+    "react-redux": "^5.1.2",
+    "react-scripts": "3.4.1",
+    "react-select": "^3.2.0",
+    "redux": "^3.7.2",
+    "redux-logger": "4.0.0",
+    "redux-thunk": "2.3.0",
+    "regenerator-runtime": "^0.13.9",
+    "sw-precache-webpack-plugin": "^1.0.0",
+    "typescript": "4.5.4",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "4.8.1",
+    "webpack-node-externals": "3.0.0",
+    "webpack-visualizer-plugin": "^0.1.11"
+  },
+  "scripts": {
+    "start": "node scripts/create_env.js && node scripts/start.js",
+    "build": "node scripts/create_env.js && node scripts/build.js"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.43",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-redux": "^7.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.4.1",
+    "html-webpack-plugin": "^4.5.2",
+    "less": "4.1.2",
+    "mini-css-extract-plugin": "^1.6.2",
+    "preload-webpack-plugin": "^3.0.0-beta.3",
+    "ts-loader": "^8.2.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

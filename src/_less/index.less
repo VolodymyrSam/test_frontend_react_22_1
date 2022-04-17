@@ -1,0 +1,364 @@
+
+@import "./_variables.less";
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button:active, button:focus {
+	outline: 0;
+}
+button:active {
+	filter: brightness(75%);
+}
+button:hover {
+	cursor: pointer;
+}
+
+input:focus, input:active {
+ outline: none;
+}
+
+.btnMain {
+  width: @width_btn;
+  height: @height_btn;
+  background-color: @main_color;
+  border: 0px solid;
+  border-radius: @base_border_radius;
+  color: @main_white;
+}
+
+.btnMainShort {
+  width: @width_short_btn;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fontBig {
+	font-size: @font_big_size;
+	font-family: 'Work Sans';
+	font-style: normal;
+	font-weight: 700;
+	letter-spacing: -0.02em;
+}
+
+.fontLittleSize {
+	font-size: @font_little_size;
+	line-height: 1;
+}
+
+.mainContainer {
+	margin-top: 34px;
+}
+
+.mainScreen {
+  max-width: @main_width;
+  padding-top: @main_top_pad;
+	padding-bottom: @main_top_pad;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.grayFont {
+	display: inline-block;
+	color: @gray;
+	font-size: @font_gray_size;
+	font-weight: 500;
+	line-height: 1;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.inputStyle {
+	padding: 14px;
+  margin-top: 10px;
+  margin-bottom: 24px;
+  height: 52px;
+	line-height: 1;
+}
+
+.mainBorder {
+  border: 1px solid @main_black;
+	border-radius: 12px;
+}
+
+.circleStyle {
+	min-width: 38px;
+  height: 38px;
+	border-radius: 19px;
+	padding: 8px 18px;
+	margin-right: 25px;
+	background: transparent;
+  border: 1px solid @main_black;
+}
+
+.placeholderFont {
+	font-family: 'Poppins';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 16px;
+}
+
+.circleBtnFont {
+	font-size: 14px;
+}
+
+.selected {
+  background: @main_light_color;
+	color: @main_color;
+	border: 1px solid @main_color;
+}
+
+.errBord {
+  border-color: @err_color;
+}
+
+.lightBorder {
+	padding: 24px;
+	border: 1px solid @light_gray;
+	box-sizing: border-box;
+	border-radius: 12px;
+}
+
+.mainContant {
+	width: 100%;
+	margin-left: 0;
+	margin-right: 0;
+}
+.filters {
+	padding-right: 37px;
+	.mainContainer {
+		padding: 30px;
+		span {
+			display: inline-block;
+			width: 100%;
+			line-height: 1;
+			margin-bottom: 0;
+		}
+		input.inputStyle {
+			width: 100%;
+		}
+		button.inputStyle {
+			width: min-content;
+		}
+		.sortSelecter {
+			padding-top: 0;
+			padding-bottom: 0;
+  		padding-right: 0;
+			display: flex;
+			&>div {
+				width: 100%;
+				padding: 0;
+				border: 0;
+				&:focus, &:active, &:hover, &:focus-within, &:focus-visible {
+					border: 0;
+					outline: 0;
+					box-shadow: none;
+				}
+				&>div {
+					padding: 0;
+				}
+			}
+		}
+	}
+}
+.wrapperRangeAg {
+	padding: 0 7px;
+	margin-bottom: 24px;
+	.containerRangeAg {
+		position: relative;
+		margin: 16px auto 13px;
+		height: 14px;
+		.slider {
+			pointer-events: none;
+			margin: 0px;
+			cursor: pointer;
+			
+			background-color: @gray;
+			box-sizing: border-box;
+			.track {
+				pointer-events: none;
+				height: 100%;
+				background-color: @main_color;
+			}
+		}
+		.thumb {
+			width: 14px;
+			height: 14px;
+			cursor: pointer;
+			background-color: @main_color;
+			border-radius: 50%;
+			border: 0;
+			position: absolute;
+		}
+	}
+}
+.listOfUsers {
+	padding-left: 30px;
+	.mainContainer {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		overflow: hidden;
+		.usersList {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			overflow-y: scroll;
+			overflow-x: hidden;
+			margin-bottom: 65px;
+			right: -17px;
+    	left: 0;
+			.userInList {
+				display: flex;
+				margin-bottom: 8px;
+				.userImgShort {
+					height: 85px;
+					widows: 85px;
+					border-radius: 12px;
+					margin-right: 16px;
+					float: right;
+				}
+				.userInfoShort {
+					flex: auto;
+					.fontBig {
+						font-size: 20px;
+						line-height: 23px;
+					}
+					.fontLittleSize:not(:last-child) {
+						margin-top: 1px;
+						margin-bottom: 9px;
+					}
+					.fontLittleSize:last-child {
+						margin-top: 1px;
+						margin-bottom: 0px;
+					}
+				}
+				.btnMainShort {
+					align-self: end;
+				}
+			}
+		}
+		.loadPanel {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 38px;
+			.nextPage {
+				margin-right: 5px;
+				line-height: 1;
+				padding: 8px 12px;
+				&:active {
+					background-color: @main_light_color
+				}
+			}
+			.countResults {
+				position: absolute;
+				right: 0;
+				width: 80px;
+				height: inherit;
+				margin: 0;
+				&>div {
+					border: 0;
+					&:focus, &:active, &:hover, &:focus-within, &:focus-visible {
+						border: 0;
+						outline: 0;
+						box-shadow: none;
+					}
+				}
+			}
+		}
+	}
+}
+
+.user {
+  margin-top: 75px;
+  margin-bottom: 75px;
+  margin-left: 0px;
+  margin-right: 0px;
+  .mainUserData {
+    width: 200px;
+		position: relative;
+    img {
+      width: 200px;
+			height: 200px;
+			border-radius: 50%;
+    }
+    h1 {
+      margin-top: 16px;
+			margin-bottom: 0px;
+			font-size: @font_big_size;
+			width: 100%;
+    	text-align: center;
+		}
+		.grayFont {
+			width: 100%;
+			text-align: center;
+		}
+    .btnMain {
+      background-color: @err_color;
+      position: absolute;
+    	bottom: 0;
+			left: 0;
+			margin-top: 40px;
+    }
+  }
+  .userContacts {
+		padding-left: 47px;
+		.editField {
+			height: 52px;
+			margin-top: 0px;
+			margin-bottom: 12px;
+			margin-left: 0px;
+			margin-right: 0px;
+			border: 0;
+			padding: 0;
+			input {
+				display: flex;
+				flex-direction: row;
+				padding: 14px;
+				width: @width_input;
+				height: 100%;
+				background: transparent;
+				border: 1px solid #121212;
+				border-radius: 12px 0 0 12px;
+				border-right: 0;
+				font-size: 16px;
+    		line-height: 20px;
+			}
+			.btnMainShort {
+				border-radius: 0px 12px 12px 0px;
+				height: 100%;
+				border: 1px solid @main_black;
+				border-left: 0;
+			}
+			.btnMainUndo {
+				border-radius: 0;
+				border-left: 0;
+				border-right: 1px solid @main_black;
+			}
+		}
+		.editField:last-child {
+			margin-bottom: 0px;
+		}
+  }
+}
+
+@media (max-width: 768px) {
+	.mainContant {
+		.filters {
+			padding-right: 15px
+		}
+		.listOfUsers {
+			padding-left: 15px;
+		}
+	}
+}
+
