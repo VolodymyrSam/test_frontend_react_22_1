@@ -12,10 +12,10 @@ const initialState = {
 	user: null,
 	filter: {
 		name: '',
-		age: [1, 50],
+		age: [1, 100],
 		gender: {
 			male: true,
-			female: false
+			female: true
 		},
 		sortBy: 'none'
 	}
