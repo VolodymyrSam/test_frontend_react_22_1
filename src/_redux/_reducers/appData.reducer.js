@@ -168,22 +168,29 @@ function filterUsers(users, filter, type) {
 
 function sortUsers(users, filter) {
 	const sortingUsers = [...users];
-	if (filter.sortBy === 'name') {
-		sortingUsers.sort( ( a, b ) => {
+	const revers = filter.sortBy.includes('Revers');
+	if (filter.sortBy.includes('name')) {
+		sortingUsers.sort( ( first, second ) => {
+			const a = revers ? second : first;
+			const b = revers ? first : second;
 			if ( a.name.first < b.name.first ) return -1;
 			if ( a.name.first > b.name.first ) return 1;
 			if ( a.name.last < b.name.last ) return -1;
 			if ( a.name.last > b.name.last ) return 1;
 			return 0;
 		});
-	} else if (filter.sortBy === 'dateOfBirth') {
-		sortingUsers.sort( ( a, b ) => {
+	} else if (filter.sortBy.includes('dateOfBirth')) {
+		sortingUsers.sort( ( first, second ) => {
+			const a = revers ? second : first;
+			const b = revers ? first : second;
 			if ( a.dob.date < b.dob.date ) return -1;
 			if ( a.dob.date > b.dob.date ) return 1;
 			return 0;
 		});
-	} else if (filter.sortBy === 'city') {
-		sortingUsers.sort( ( a, b ) => {
+	} else if (filter.sortBy.includes('city')) {
+		sortingUsers.sort( ( first, second ) => {
+			const a = revers ? second : first;
+			const b = revers ? first : second;
 			if ( a.location.city < b.location.city ) return -1;
 			if ( a.location.city > b.location.city ) return 1;
 			return 0;

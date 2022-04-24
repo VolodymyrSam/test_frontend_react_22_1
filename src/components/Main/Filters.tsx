@@ -20,8 +20,11 @@ const Filters = (props: PropsFromRedux) => {
 	const sortOptions = [
 		{ value: 'none', label: 'No' },
 		{ value: 'name', label: 'Name' },
+		{ value: 'nameRevers', label: 'Name in reverse' },
 		{ value: 'dateOfBirth', label: 'Date of birth' },
+		{ value: 'dateOfBirthRevers', label: 'Date of birth in reverse' },
 		{ value: 'city', label: 'City' },
+		{ value: 'cityRevers', label: 'City in reverse' },
 		{ value: 'customSort', label: 'Custom sort' }
 	];
 
