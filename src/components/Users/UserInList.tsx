@@ -42,6 +42,15 @@ const UserInList = ({ user, startDragging, dispatch }: Props & PropsFromRedux) =
     });
 	}
 
+	function gerDate(date) {
+		const birthData = new Date(date);
+		const data = birthData.getDate();
+		const dataFull = data < 10 ? '0'+data : data;
+		const monthLong = birthData.toLocaleString('en-us', {month:'long', year:'numeric'});
+		const birthDateLong = `${dataFull} ${monthLong}`;
+		return birthDateLong;
+	}
+
 	return (
 		<div className={`userInList lightBorder ${itsDragging ? 'itsDragging' : ''}`}
 			ref={el}
@@ -50,7 +59,7 @@ const UserInList = ({ user, startDragging, dispatch }: Props & PropsFromRedux) =
 			<img src={picture.medium} alt="" className="userImgShort" />
 			<div className="userInfoShort">
 				<div className="fontBig">{`${first} ${last}`}</div>
-				<span className="grayFont">{dob.date}</span>
+				<span className="grayFont">{gerDate(dob.date)}</span>
 				<p className="address fontLittleSize">{`${city}, ${street.name} ${street.number}`}</p>
 				<p className="email fontLittleSize">{email}</p>
 			</div>
