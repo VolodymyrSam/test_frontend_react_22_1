@@ -21,7 +21,6 @@ const Range = (props: PropsFromRedux) => {
 	const [isDragging0, set_isDragging0] = useState(false);
 	const [isDragging1, set_isDragging1] = useState(false);
 
-	const container = useRef(null) as RefObject<HTMLDivElement>;
 	const slider = useRef(null) as RefObject<HTMLDivElement>;
 	const track = useRef(null) as RefObject<HTMLDivElement>;
 	const thumb0 = useRef(null) as RefObject<HTMLDivElement>;
@@ -109,7 +108,6 @@ const Range = (props: PropsFromRedux) => {
 
   return (
 		<div className="wrapperRangeAg"
-			ref={container}
 			onMouseMove={mousemove}
 			onMouseUp={mouseup}
 			onMouseLeave={mouseup}>

@@ -74,6 +74,7 @@ const Filters = (props: PropsFromRedux) => {
 				</div>
         <span className={'grayFont'}>{'Sort By'}</span>
         <Select
+					menuPlacement="auto"
         	styles={selectCustomStylesFun()}
         	className='sortSelecter inputStyle mainBorder'
         	value={sortOptions.find( opt => opt.value === sortBy)}

@@ -94,11 +94,23 @@ export function appData(state = initialState, action) {
 				...state.filter,
 				sortBy: payload
 			};
+			if (payload.includes('customSort')) return {
+				...state,
+				filter: newFilter
+			};
 			const sorterUsers = sortUsers(state.usersForRender, newFilter);
 			return {
 				...state,
 				usersForRender: sorterUsers,
 				filter: newFilter
+			};
+		}
+		case allConstants.CHANGE_MANUAL_MOVE: {
+			const newArr = [...state.usersForRender];
+			newArr.splice(payload.toIndex, 0, newArr.splice(payload.startIndex, 1)[0]); // because move first one
+			return {
+				...state,
+				usersForRender: newArr
 			};
 		}
 		case allConstants.CHANGE_COUNT_RESULTS:

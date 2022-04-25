@@ -1,28 +1,39 @@
 
-import React, { FunctionComponent } from 'react';
+import React, { useRef, useEffect, RefObject, FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 
 import { allConstants } from '../../_redux/_constants/all_constants.constants';
 import { Dispatch, STORE } from '../../_redux/types';
 
 type Props = {
-	user: any
+	user: any,
+	startDragging: (e, index) => void
 };
 
 type PropsFromRedux = {
 	dispatch: Dispatch
 };
 
-const UserInList = ({ user, dispatch }: Props & PropsFromRedux) => {
+const UserInList = ({ user, startDragging, dispatch }: Props & PropsFromRedux) => {
 	const {
 		name,
 		location,
 		dob,
 		email,
-		picture
+		picture,
+		index,
+		itsDragging
 	} = user;
 	const { first, last } = name;
 	const { city, street } = location;
+
+	const el = useRef(null) as RefObject<HTMLDivElement>;
+
+	useEffect( () => {
+		if (!itsDragging && el) {
+			el.current!.style.transform = 'none';
+		}
+	}, [itsDragging]);
 
 	function editUser() {
     dispatch({
@@ -30,8 +41,12 @@ const UserInList = ({ user, dispatch }: Props & PropsFromRedux) => {
       payload: user
     });
 	}
+
 	return (
-		<div className="userInList lightBorder">
+		<div className={`userInList lightBorder ${itsDragging ? 'itsDragging' : ''}`}
+			ref={el}
+			data-key={index}
+			onMouseDown={(e) => startDragging(e, index)}>
 			<img src={picture.medium} alt="" className="userImgShort" />
 			<div className="userInfoShort">
 				<div className="fontBig">{`${first} ${last}`}</div>

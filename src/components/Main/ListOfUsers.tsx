@@ -1,5 +1,5 @@
 
-import React, { FunctionComponent } from 'react';
+import React, { useState, useRef, FunctionComponent, RefObject } from 'react';
 import { connect } from 'react-redux';
 import Select from 'react-select';
 
@@ -10,21 +10,30 @@ import { Dispatch, STORE, Request } from '../../_redux/types';
 import { selectCustomStylesFun } from '../Common/selecterStyle';
 
 type PropsFromRedux = {
-  users: any[],
   usersForRender: any[],
   request: Request,
+  sortBy: string,
   dispatch: Dispatch
 }
 
 const ListOfUsers = (props: PropsFromRedux) => {
-	const { users, usersForRender, request, dispatch } = props;
+	const { usersForRender, request, sortBy, dispatch } = props;
 	const { currentPage, results } = request;
+
+	const [draggingIndex, set_draggingIndex] = useState(-1);
+	const [startPageY, set_startPageY] = useState(0);
+
+	const container = useRef(null) as RefObject<HTMLDivElement>;
 
 	const resultsNum = Number(results);
 	const preFirstElementIndex = resultsNum * (currentPage - 1);
 	const lestElementIndex = resultsNum * currentPage;
 	let userForView: any[] = []; // -1
 	let countPages = 1;
+
+	const dragAndDrop = sortBy === 'customSort';
+	const elHeight = 143;
+
 	if (usersForRender.length) {
 		userForView = usersForRender.slice(preFirstElementIndex, lestElementIndex); // -1
 		const count = usersForRender.length / resultsNum;
@@ -103,15 +112,74 @@ const ListOfUsers = (props: PropsFromRedux) => {
 		}
 	};
 
+	const startDragging = (e, index) => {
+		if (dragAndDrop) {
+			set_draggingIndex(index);
+			const contRect = container.current!.getBoundingClientRect();
+			const scrollTop = container.current!.scrollTop;
+			set_startPageY(e.pageY + scrollTop - contRect.top);
+		}
+	};
+
+
+	const onMouseMove = (e) => {
+		e.preventDefault();
+		e.stopPropagation();
+		if (dragAndDrop && draggingIndex !== -1) {
+			const contRect = container.current!.getBoundingClientRect();
+			const scrollTop = container.current!.scrollTop;
+			const currentPos = e.pageY + scrollTop - contRect.top;
+			let offset = currentPos - startPageY;
+			const topBorder = contRect.top + 50;
+			const bottomBorder = contRect.bottom - 50;
+			if (e.pageY < topBorder) container.current!.scrollBy(0, -10);
+			if (e.pageY > bottomBorder) container.current!.scrollBy(0, 10);
+			if (offset > 0 && offset > elHeight && draggingIndex < usersForRender.length) {
+				// Движение вниз
+				offset -= startPageY;
+				const newIndex = draggingIndex + 1;
+				set_draggingIndex(newIndex);
+				set_startPageY(currentPos);
+				dispatch({
+					type: allConstants.CHANGE_MANUAL_MOVE,
+					payload: {startIndex: draggingIndex, toIndex: newIndex}
+				});
+			} else if (offset < 0 && offset < -elHeight && draggingIndex > 0) {
+				// Двигаться вверх
+				offset += startPageY;
+				const newIndex = draggingIndex - 1;
+				set_draggingIndex(newIndex);
+				set_startPageY(currentPos);
+				dispatch({
+					type: allConstants.CHANGE_MANUAL_MOVE,
+					payload: {startIndex: draggingIndex, toIndex: newIndex}
+				});
+			};
+			const el = document.querySelector(`[data-key='${draggingIndex}']`) as HTMLDivElement;
+			if (el) el.style.transform = 'translate(0px, ' + offset + 'px)';
+		};
+	};
+
+	const onMouseUp = (e) => {
+		set_draggingIndex(-1);
+		set_startPageY(0);
+	};
+
   return (
-    <div className="listOfUsers  col-sm-12 col-md-7">
+    <div className={`listOfUsers  col-sm-12 col-md-7 ${dragAndDrop ? 'dragAndDrop' : ''}`}>
       <b className='fontBig'>{'List of users'}</b>
       <div className="mainContainer">
-      	<div className="usersList">
+      	<div className="usersList"
+					onMouseUp={onMouseUp}
+					onMouseMove={e => onMouseMove(e)}
+					ref={container}>
 					{userForView.map( (user, index) => {
 						return (<UserInList
 							key={index}
-							user={user}
+							user={ (draggingIndex === index) ?
+								{...user, index, itsDragging: true}
+								: {...user, index} }
+							startDragging={startDragging}
 						/>);
 					})}
       	</div>
@@ -136,12 +204,12 @@ const ListOfUsers = (props: PropsFromRedux) => {
 };
 
 function mapStateToProps(store : STORE) {
-  const { users, usersForRender, request } = store.appData;
+  const { usersForRender, request, filter } = store.appData;
 
   return {
-		users,
 		usersForRender,
-		request
+		request,
+		sortBy: filter.sortBy
   };
 }
 
