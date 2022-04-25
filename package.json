@@ -29,8 +29,9 @@
     "webpack-visualizer-plugin": "^0.1.11"
   },
   "scripts": {
-    "start": "node scripts/create_env.js && node scripts/start.js",
-    "build": "node scripts/create_env.js && node scripts/build.js",
+		"start": "node scripts/create_env.js && node scripts/start.js",
+		"build": "node scripts/create_env.js && node scripts/build.js",
+		"predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "devDependencies": {
