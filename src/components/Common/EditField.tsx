@@ -47,15 +47,16 @@ const EditField = (props: Props) => {
       <input type="text"
         disabled={btnState === ready_for_change}
         value={inputValue}
-        onChange={changeVal}
+				onChange={changeVal}
+				className={'col'}
       />
       {btnState === ready_for_save ?
-				<button className="btnMain btnMainShort btnMainUndo" onClick={ _ => action()}>
+				<button className="col btnMain btnMainShort btnMainUndo" onClick={ _ => action()}>
       	  {undo}
 				</button>
 				: null
 			}
-      <button className="btnMain btnMainShort" onClick={ _ => action()}>
+      <button className="col btnMain btnMainShort" onClick={ _ => action()}>
         {btnState === ready_for_change ? edit : update}
       </button>
     </div>

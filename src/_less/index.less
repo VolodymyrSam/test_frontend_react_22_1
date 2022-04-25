@@ -34,7 +34,8 @@ input:focus, input:active {
 }
 
 .btnMainShort {
-  width: @width_short_btn;
+	width: @width_short_btn;
+	max-width: @width_short_btn;
 }
 
 .fullWidth {
@@ -387,6 +388,31 @@ input:focus, input:active {
 		}
 		&>div {
 			margin-top: 50px;
+		}
+	}
+	.userInfo {
+		.fullWidth {
+			width: max-content;
+			margin: 0 auto;
+		}
+		.mainUserData {
+			margin: 0 auto 50px;
+			.btnMain {
+				position: relative;
+			}
+		}
+		.userContacts {
+			width: 100%;
+			padding-right: 47px;
+			.editField {
+				.btnMainShort {
+					min-width: 60px;
+					width: auto;
+				}
+				input {
+					width: auto;
+				}
+			}
 		}
 	}
 }
