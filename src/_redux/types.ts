@@ -13,7 +13,8 @@ export type STORE = {
 		users: any[],
 		usersForRender: any[],
 		user: any,
-		filter: Filter
+		filter: Filter,
+		openUserdata: boolean
 	}
 }
 

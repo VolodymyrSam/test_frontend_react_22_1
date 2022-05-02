@@ -54,6 +54,12 @@ const Filters = (props: PropsFromRedux) => {
     });
 	};
 
+	function openUserdata() {
+    dispatch({
+      type: allConstants.OPEN_CLOSE_USER_DATA
+    });
+	}
+
   return (
     <div className="filters col-sm-12 col-md-5">
       <b className='fontBig'>{'Filter'}</b>
@@ -81,6 +87,7 @@ const Filters = (props: PropsFromRedux) => {
         	onChange={opt => changeSortSelect(opt)}
         	options={sortOptions}
 				/>
+				<button className="btnMain" onClick={ _ => openUserdata()}>{'Open random data'}</button>
       </div>
     </div>
   );

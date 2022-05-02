@@ -18,7 +18,8 @@ const initialState = {
 			female: true
 		},
 		sortBy: 'none'
-	}
+	},
+	openUserdata: false
 };
 
 export function appData(state = initialState, action) {
@@ -37,6 +38,11 @@ export function appData(state = initialState, action) {
 			return {
 				...state,
 				user: payload
+			};
+		case allConstants.OPEN_CLOSE_USER_DATA:
+			return {
+				...state,
+				openUserdata: !state.openUserdata
 			};
 		case allConstants.CHANGE_FILTER_NAME: {
 			const newFilter = {

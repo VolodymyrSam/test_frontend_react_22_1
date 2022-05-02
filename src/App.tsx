@@ -7,10 +7,12 @@ import { UserInfo } from './components/Users/UserInfo';
 import { connect } from 'react-redux';
 
 import { Dispatch, STORE } from './_redux/types';
+import { UserDataProvider } from './components/Users/UserData';
 
 type PropsFromRedux = {
 	results: number,
   user: any,
+	openUserdata: boolean
   dispatch: Dispatch
 }
 
@@ -29,18 +31,21 @@ function App(props: PropsFromRedux) {
     <div className="mainScreen app">
 			{ user ?
 				<UserInfo/> :
-        <Main/>
+				props.openUserdata ?
+					<UserDataProvider/>
+					: <Main/>
 			}
     </div>
   );
 }
 
 function mapStateToProps(store : STORE) {
-  const { request, user } = store.appData;
+  const { request, user, openUserdata } = store.appData;
 
   return {
 		results: request.results,
-    user
+		user,
+		openUserdata
   };
 }
 
