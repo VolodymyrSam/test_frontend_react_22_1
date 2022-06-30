@@ -27,16 +27,16 @@ function App(props: PropsFromRedux) {
           <nav>
             <ul>
               <li>
-                <Link to="/test_frontend_react_22_1/">Home</Link>
+                <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/test_frontend_react_22_1/complaints">Complaints</Link>
+                <Link to="/complaints">Complaints</Link>
               </li>
             </ul>
           </nav>
           <Routes>
-            <Route path='/test_frontend_react_22_1/' element={<Main/>}/>
-            <Route path='/test_frontend_react_22_1/complaints' element={<Complaints/>} />
+            <Route path='/' element={<Main/>}/>
+            <Route path='/complaints' element={<Complaints/>} />
           </Routes>
       </Router>
     </div>
