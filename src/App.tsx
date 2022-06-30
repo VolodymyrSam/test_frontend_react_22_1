@@ -1,7 +1,7 @@
 
 import React, { useEffect, FunctionComponent, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { HashRouter, Routes, Route, BrowserRouter } from 'react-router-dom';
+import { HashRouter, Routes, Route, BrowserRouter, Link } from 'react-router-dom';
 
 import { Dispatch, STORE } from './_redux/types';
 import { Main } from './components/Main/Main';
@@ -24,12 +24,20 @@ function App(props: PropsFromRedux) {
   return (
     <div className="mainScreen app">
       <Router>
-        <Fragment>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/test_frontend_react_22_1/">Home</Link>
+              </li>
+              <li>
+                <Link to="/test_frontend_react_22_1/complaints">Complaints</Link>
+              </li>
+            </ul>
+          </nav>
           <Routes>
-            <Route path='/' element={<Main/>}/>
-            <Route path='/complaints' element={<Complaints/>} />
+            <Route path='/test_frontend_react_22_1/' element={<Main/>}/>
+            <Route path='/test_frontend_react_22_1/complaints' element={<Complaints/>} />
           </Routes>
-        </Fragment>
       </Router>
     </div>
   );

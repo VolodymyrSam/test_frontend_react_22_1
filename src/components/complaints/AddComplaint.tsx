@@ -89,7 +89,7 @@ const AddComplaint = (props: Props) => {
         </div>
         {complaint ? <div className="complaintProperties col mainBord mainBordRad mainPadd">
           <div className="row mb-4">
-            <div className="col row ">
+            <div className="col row mb-2">
               <div className="complaintName col-auto mr-2"> {(complaintList.find( el => el.id === complaint) || {}).label} </div>
               <Select
 				      	menuPlacement="auto"
