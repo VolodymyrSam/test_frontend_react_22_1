@@ -1,0 +1,199 @@
+
+@import './fontawesome-free-6.1.1-web/less/fontawesome.less';
+@import './fontawesome-free-6.1.1-web/less/solid.less';
+
+/*----- Main sizes -----*/
+
+@main_width_complaint: 900px;
+@main_y_pad_complaint: 30px;
+@main_x_pad_complaint: 40px;
+
+.fa, .fa-solid {
+  transform: translateY(-4%);
+}
+
+h1 {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.col, .col-auto {
+  padding-left: 0;
+  padding-right: 0;
+}
+.row {
+  margin-right: -0;
+  margin-left: 0;
+}
+
+.mainText {
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.smallText {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.placeholderColor {
+  font-size: 12px;
+  line-height: 15px;
+	color: #C4C4C4;
+}
+
+.lengthTextArea {
+  position: absolute;
+  bottom: 7px;
+  right: 12px;
+}
+
+.bcgWhite {
+	background-color: #fff;
+}
+
+.bcgGrey {
+	background-color: #F8F6F4;
+}
+
+.bcgVioletHover:hover {
+	background-color: #F4F2FF;
+}
+
+.mainBordRad {
+  border-radius: 5px;
+}
+
+.mainBtn {
+  width: 150px;
+  height: 40px;
+}
+
+.mainBord {
+	border: 2px solid #CEC6FF;
+}
+
+.mainBG {
+	background-color: #6D79FF;
+	color: #fff;
+}
+
+.mainPadd {
+	padding: 15px;
+}
+
+.secondPadd {
+	padding: 7px 10px;
+}
+
+.quadrangleButton {
+  width: 50px;
+  height: 50px;
+  background: #CEC6FF;
+}
+
+button {
+  border: 0;
+  outline: 0;
+  &>i {
+    font-style: normal;
+  }
+}
+
+.quadrangleButtonLev2 {
+  width: 30px;
+  height: 30px;
+}
+
+.quadrangleButtonLev3 {
+  width: 20px;
+  height: 20px;
+  &>div {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    transform: translate(50%, -40%);
+    left: 0;
+    top: 0;
+  }
+  &>div::before {
+    font-size: 10px;
+  }
+}
+
+.mainScreenComplaint {
+  max-width: @main_width_complaint;
+  padding-top: @main_y_pad_complaint;
+	padding-bottom: @main_y_pad_complaint;
+	padding-left: @main_x_pad_complaint;
+	padding-right: @main_x_pad_complaint;
+	margin-left: auto;
+  margin-right: auto;
+  background: #fff;
+  border-radius: 10px;
+}
+
+.mainBoldFont {
+	font-family: 'Inter';
+	font-size: 24px;
+	font-weight: 700;
+	line-height: 29px;
+}
+
+.newComlaintText {
+  resize: none;
+}
+
+.complaintList {
+  margin-right: 40px;
+}
+
+.selectedComplaints {
+  width: 400px;
+  height: 50px;
+}
+
+.arrowDown {
+  width: 0; 
+  height: 0; 
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  
+  border-top: 9px solid #CEC6FF;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.arrowDownsmoll {
+  width: 0; 
+  height: 0; 
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  
+  border-top: 6.5px solid #CEC6FF;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.complaintName {
+  line-height: 30px;
+  font-weight: 500;
+}
+
+.createdDate {
+  width: min-content;
+}
+
+.triangleLeft::after {
+  content: ''; 
+  position: absolute;
+  left: -14px;
+  top: 5px;
+  border: 7px solid transparent;
+  border-right: 8px solid #F8F6F4;
+ }
+
+@media (max-width: 768px) {
+}
+

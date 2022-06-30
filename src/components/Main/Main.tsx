@@ -2,35 +2,39 @@
 import React, { FunctionComponent } from 'react';
 import { connect } from 'react-redux';
 
+import { UserInfo } from '../Users/UserInfo';
+import { UserDataProvider } from '../Users/UserData';
 import { Filters } from './Filters';
 import { ListOfUsers } from './ListOfUsers';
 import { Dispatch, STORE } from '../../_redux/types';
 
-type PropsFromRedux = {
-  users: any
-}
+const Main = (props: Props) => {
 
-const Main = (props: PropsFromRedux) => {
-
-  return (
-    <div className="mainContant row">
-      <Filters/>
-      <ListOfUsers/>
-    </div>
-  );
+  return props.user ?
+		<UserInfo/>
+		: props.openUserdata ?
+			<UserDataProvider/>
+			: (<div className="mainContant row">
+        <Filters/>
+        <ListOfUsers/>
+      </div>);
 };
 
 function mapStateToProps(store : STORE) {
-  const { users } = store.appData;
+  const { users, user, openUserdata } = store.appData;
 
   return {
-    users
+    users,
+		user,
+		openUserdata
   };
 }
 
 type Props = {
-  dispatch?: Dispatch
+  dispatch?: Dispatch,
+  user: any,
+	openUserdata: boolean
 };
 
-const connectedMain: FunctionComponent<Props> = connect(mapStateToProps)(Main as FunctionComponent);
+const connectedMain: FunctionComponent = connect(mapStateToProps)(Main as FunctionComponent);
 export { connectedMain as Main };
