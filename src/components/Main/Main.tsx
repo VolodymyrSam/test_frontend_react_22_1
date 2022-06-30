@@ -1,6 +1,7 @@
 
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { allActions } from './_redux/_actions';
 
 import { UserInfo } from '../Users/UserInfo';
 import { UserDataProvider } from '../Users/UserData';
@@ -9,6 +10,16 @@ import { ListOfUsers } from './ListOfUsers';
 import { Dispatch, STORE } from '../../_redux/types';
 
 const Main = (props: Props) => {
+	const { results, dispatch } = props;
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  async function getData() {
+		const res: any = await dispatch(allActions.loadUsers(Number(results))) as any;
+  }
+
 
   return props.user ?
 		<UserInfo/>
@@ -21,20 +32,26 @@ const Main = (props: Props) => {
 };
 
 function mapStateToProps(store : STORE) {
-  const { users, user, openUserdata } = store.appData;
+  const { request, users, user, openUserdata } = store.appData;
 
   return {
+		results: request.results,
     users,
 		user,
 		openUserdata
   };
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return { dispatch };
+};
+
 type Props = {
-  dispatch?: Dispatch,
+	results: number,
+  dispatch: Dispatch,
   user: any,
 	openUserdata: boolean
 };
 
-const connectedMain: FunctionComponent = connect(mapStateToProps)(Main as FunctionComponent);
+const connectedMain: FunctionComponent = connect(mapStateToProps, mapDispatchToProps)(Main as FunctionComponent);
 export { connectedMain as Main };

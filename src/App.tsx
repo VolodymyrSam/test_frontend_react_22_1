@@ -22,16 +22,6 @@ const Router = ({ children }) => {
 };
 
 function App(props: PropsFromRedux) {
-	const { results, dispatch } = props;
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-  async function getData() {
-		const res: any = await dispatch(allActions.loadUsers(Number(results))) as any;
-  }
-
   return (
     <div className="mainScreen app">
       <Router>
@@ -46,17 +36,5 @@ function App(props: PropsFromRedux) {
   );
 }
 
-function mapStateToProps(store : STORE) {
-  const { request, user, openUserdata } = store.appData;
-
-  return {
-		results: request.results
-  };
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return { dispatch };
-};
-
-const connectedApp: FunctionComponent<PropsFromRedux> = connect(mapStateToProps, mapDispatchToProps)(App as FunctionComponent);
+const connectedApp: FunctionComponent<PropsFromRedux> = connect()(App as FunctionComponent);
 export { connectedApp as App };
