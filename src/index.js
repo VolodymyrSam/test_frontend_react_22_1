@@ -27,7 +27,7 @@ ReactDOM.render(
         <Fragment>
           <Routes>
             <Route path='/' element={<Main/>}/>
-            <Route path='/test_frontend_react_22_1/complaints' element={<Complaints/>} />
+            <Route path='/complaints' element={<Complaints/>} />
           </Routes>
         </Fragment>
       </Router>
