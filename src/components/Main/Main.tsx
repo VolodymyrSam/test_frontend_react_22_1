@@ -1,7 +1,7 @@
 
 import React, { FunctionComponent, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { allActions } from './_redux/_actions';
+import { allActions } from '../../_redux/_actions';
 
 import { UserInfo } from '../Users/UserInfo';
 import { UserDataProvider } from '../Users/UserData';
