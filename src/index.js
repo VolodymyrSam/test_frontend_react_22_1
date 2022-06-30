@@ -12,9 +12,9 @@ import { store } from './_redux/Store.js';
 ReactDOM.render(
   <Provider store={store} >
     {/* <React.StrictMode> */}
-      {/* <HashRouter> */}
+      <HashRouter>
         <App />
-      {/* </HashRouter> */}
+      </HashRouter>
     {/* </React.StrictMode> */}
   </Provider>,
   document.getElementById('root'));
