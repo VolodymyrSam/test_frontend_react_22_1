@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { HashRouter, Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { Dispatch, STORE } from './_redux/types';
-import { allActions } from './_redux/_actions';
 import { Main } from './components/Main/Main';
 import { Complaints } from './components/complaints/Complaints';
 

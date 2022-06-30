@@ -2,7 +2,7 @@
 	"name": "test_app",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": ".",
+	"homepage": "https://VolodymyrSam.github.io/test_frontend_react_22_1",
 	"dependencies": {
 		"autoprefixer": "^9.8.0",
 		"axios": "^0.26.1",

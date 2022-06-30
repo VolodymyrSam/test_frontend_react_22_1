@@ -5,38 +5,12 @@ import './_less/complaints.less';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
-import { HashRouter, Routes, Route, BrowserRouter } from 'react-router-dom';
 
 import { store } from './_redux/Store.js';
-import { Main } from './components/Main/Main';
-import { Complaints } from './components/complaints/Complaints';
-
-const Router = ({ children }) => {
-  const isProduction = process.env.NODE_ENV === 'production';
-
-  return <HashRouter>{children}</HashRouter>;
-  // if (isProduction) return <HashRouter>{children}</HashRouter>;
-
-  // return <BrowserRouter>{children}</BrowserRouter>;
-};
 
 ReactDOM.render(
   <Provider store={store} >
-    <div className="mainScreen app">
-      <Router>
-        <Fragment>
-          <Routes>
-            <Route path='/' element={<Main/>}/>
-            <Route path='/complaints' element={<Complaints/>} />
-          </Routes>
-        </Fragment>
-      </Router>
-    </div>
-    {/* <React.StrictMode> */}
-      {/* <HashRouter>
-        <App />
-      </HashRouter> */}
-    {/* </React.StrictMode> */}
+    <App />
   </Provider>,
   document.getElementById('root'));
 
