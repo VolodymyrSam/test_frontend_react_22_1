@@ -14,9 +14,10 @@ import { Complaints } from './components/complaints/Complaints';
 const Router = ({ children }) => {
   const isProduction = process.env.NODE_ENV === 'production';
 
-  if (isProduction) return <HashRouter>{children}</HashRouter>;
+  return <HashRouter>{children}</HashRouter>;
+  // if (isProduction) return <HashRouter>{children}</HashRouter>;
 
-  return <BrowserRouter>{children}</BrowserRouter>;
+  // return <BrowserRouter>{children}</BrowserRouter>;
 };
 
 ReactDOM.render(
