@@ -5,12 +5,20 @@ import './_less/complaints.less';
 import { App } from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux';
+import { HashRouter } from 'react-router-dom';
 
 import { store } from './_redux/Store.js';
 
 ReactDOM.render(
   <Provider store={store} >
-    <App />
+    <React.StrictMode>
+      <HashRouter>
+        <App />
+      </HashRouter>
+      <Provider store={store} >
+        <App />
+      </Provider>
+    </React.StrictMode>
   </Provider>,
   document.getElementById('root'));
 

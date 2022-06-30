@@ -62,7 +62,7 @@ const Filters = (props: PropsFromRedux) => {
 
   return (
     <div className="filters col-sm-12 col-md-5">
-      <b className='fontBig'>{'Filter2'}</b>
+      <b className='fontBig'>{'Filter'}</b>
       <div className="mainContainer lightBorder placeholderFont">
         <span className={'grayFont'}>{'Name'}</span>
         <input
