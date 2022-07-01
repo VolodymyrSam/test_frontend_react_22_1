@@ -166,7 +166,7 @@ const ListOfUsers = (props: PropsFromRedux) => {
 	};
 
   return (
-    <div className={`listOfUsers  col-sm-12 col-md-7 ${dragAndDrop ? 'dragAndDrop' : ''}`}>
+    <div className={`listOfUsers  col-sm-12 col-md-7 pb-5 ${dragAndDrop ? 'dragAndDrop' : ''}`}>
       <b className='fontBig'>{'List of users'}</b>
       <div className="mainContainer">
       	<div className="usersList"

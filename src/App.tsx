@@ -24,12 +24,12 @@ function App(props: PropsFromRedux) {
   return (
     <div className="mainScreen app">
       <Router>
-          <nav>
-            <ul>
-              <li>
+          <nav className="">
+            <ul className="row">
+              <li className="col-auto mx-3 listStylePositionInside">
                 <Link to="/">Home</Link>
               </li>
-              <li>
+              <li className="col-auto mx-3 listStylePositionInside">
                 <Link to="/complaints">Complaints</Link>
               </li>
             </ul>

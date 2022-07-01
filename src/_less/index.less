@@ -24,6 +24,10 @@ input:focus, input:active {
  outline: none;
 }
 
+.listStylePositionInside {
+  list-style-position: inside;
+}
+
 .btnMain {
   width: @width_btn;
   height: @height_btn;
@@ -61,8 +65,8 @@ input:focus, input:active {
 
 .mainScreen {
   max-width: @main_width;
+  height: 100vh;
   padding-top: @main_top_pad;
-	padding-bottom: @main_top_pad;
 	margin-left: auto;
 	margin-right: auto;
 }
@@ -129,7 +133,8 @@ input:focus, input:active {
 }
 
 .mainContant {
-	width: 100%;
+  width: 100%;
+  height: calc(100% - 50px);
 	margin-left: 0;
 	margin-right: 0;
 }
@@ -226,7 +231,7 @@ input:focus, input:active {
 	.mainContainer {
 		position: relative;
 		width: 100%;
-		height: 100%;
+		height: calc(100% - 85px);
 		min-height: 500px;
 		overflow: hidden;
 		.usersList {
